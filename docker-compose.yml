@@ -13,7 +13,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./api/init_db.py:/docker-entrypoint-initdb.d/init_db.py
     ports:
-      - "5432:5432"
+      - "55432:5432"
     networks:
       - consultoria-network
     restart: unless-stopped

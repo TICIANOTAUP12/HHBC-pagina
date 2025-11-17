@@ -31,9 +31,13 @@ check_docker() {
         print_error "Docker is not installed. Please install Docker first."
         exit 1
     fi
-    
-    if ! command -v docker-compose &> /dev/null; then
-        print_error "Docker Compose is not installed. Please install Docker Compose first."
+
+    if command -v docker-compose &> /dev/null; then
+        COMPOSE_CMD="docker-compose"
+    elif docker compose version &> /dev/null; then
+        COMPOSE_CMD="docker compose"
+    else
+        print_error "Docker Compose not found. Install docker-compose or the docker compose plugin."
         exit 1
     fi
 }
@@ -51,10 +55,10 @@ check_env_file() {
 # Build and start services
 start_services() {
     print_status "Building Docker images..."
-    docker-compose build --no-cache
+    $COMPOSE_CMD build --no-cache
     
     print_status "Starting services..."
-    docker-compose up -d
+    $COMPOSE_CMD up -d
     
     print_status "Waiting for services to be ready..."
     sleep 10
@@ -82,25 +86,25 @@ start_services() {
 # Stop services
 stop_services() {
     print_status "Stopping services..."
-    docker-compose down
+    $COMPOSE_CMD down
 }
 
 # View logs
 view_logs() {
     print_status "Showing logs (press Ctrl+C to exit)..."
-    docker-compose logs -f
+    $COMPOSE_CMD logs -f
 }
 
 # Restart services
 restart_services() {
     print_status "Restarting services..."
-    docker-compose restart
+    $COMPOSE_CMD restart
 }
 
 # Show status
 show_status() {
     print_status "Service status:"
-    docker-compose ps
+    $COMPOSE_CMD ps
 }
 
 # Backup database
@@ -108,7 +112,7 @@ backup_database() {
     print_status "Creating database backup..."
     mkdir -p backups
     BACKUP_FILE="backups/consultoria_backup_$(date +%Y%m%d_%H%M%S).sql"
-    docker-compose exec db pg_dump -U consultoria_user consultoria_db > "$BACKUP_FILE"
+    $COMPOSE_CMD exec db pg_dump -U consultoria_user consultoria_db > "$BACKUP_FILE"
     print_status "Database backup saved to: $BACKUP_FILE"
 }
 
