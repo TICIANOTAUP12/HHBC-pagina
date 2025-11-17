@@ -5,10 +5,11 @@ WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
+    bash \
     gcc \
     sqlite3 \
     curl \
-    && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first for better caching
 COPY requirements-docker.txt requirements.txt
@@ -20,9 +21,10 @@ COPY . .
 # Make entrypoint script executable
 RUN chmod +x docker-entrypoint.sh
 
-# Create non-root user for security
+# Create non-root user (unused for now due to volume permissions)
 RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
-USER appuser
+# Run as root to ensure write access to mounted /app/data during deployment
+USER root
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
@@ -32,4 +34,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
 EXPOSE 5000
 
 # Run the application with entrypoint
-CMD ["./docker-entrypoint.sh"]
+CMD ["bash", "./docker-entrypoint.sh"]

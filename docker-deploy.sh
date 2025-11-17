@@ -32,10 +32,11 @@ check_docker() {
         exit 1
     fi
 
-    if command -v docker-compose &> /dev/null; then
-        COMPOSE_CMD="docker-compose"
-    elif docker compose version &> /dev/null; then
+    if docker compose version &> /dev/null; then
         COMPOSE_CMD="docker compose"
+    elif command -v docker-compose &> /dev/null; then
+        print_warning "Legacy docker-compose detected. Prefer 'docker compose' to avoid known errors."
+        COMPOSE_CMD="docker-compose"
     else
         print_error "Docker Compose not found. Install docker-compose or the docker compose plugin."
         exit 1
@@ -67,7 +68,7 @@ start_services() {
     print_status "Checking service health..."
     
     # Check backend health
-    if curl -f http://localhost:5000/health > /dev/null 2>&1; then
+    if curl -f http://localhost:5060/health > /dev/null 2>&1; then
         print_status "✅ Backend service is healthy"
     else
         print_error "❌ Backend service is not responding"
@@ -75,7 +76,7 @@ start_services() {
     fi
     
     # Check frontend
-    if curl -f http://localhost > /dev/null 2>&1; then
+    if curl -f http://localhost:3060 > /dev/null 2>&1; then
         print_status "✅ Frontend service is healthy"
     else
         print_error "❌ Frontend service is not responding"

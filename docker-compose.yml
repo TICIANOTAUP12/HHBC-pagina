@@ -32,14 +32,14 @@ services:
     environment:
       - FLASK_ENV=production
       - FLASK_DEBUG=False
-      - DATABASE_URL=postgresql://consultoria_user:${DB_PASSWORD:-consultoria_pass_2024}@db:5432/consultoria_db
+      - DATABASE_URL=/app/data/consultoria.db
       - JWT_SECRET_KEY=${JWT_SECRET_KEY:-your-super-secure-jwt-key-minimum-32-characters}
       - SECRET_KEY=${SECRET_KEY:-your-super-secure-secret-key-minimum-32-characters}
       - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
       - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000,http://frontend:80}
     ports:
-      - "5000:5000"
+      - "5060:5000"
     depends_on:
       db:
         condition: service_healthy
@@ -61,7 +61,7 @@ services:
       - VITE_APP_URL=${VITE_APP_URL:-http://localhost}
       - VITE_ENVIRONMENT=${VITE_ENVIRONMENT:-production}
     ports:
-      - "80:80"
+      - "3060:80"
     depends_on:
       backend:
         condition: service_healthy
