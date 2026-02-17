@@ -17,6 +17,14 @@ export default function App() {
   const [serviceId, setServiceId] = useState<string | undefined>(undefined);
   const [userRole, setUserRole] = useState<string | null>(null);
 
+  // Handle URL-based routing for /admin
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path === "/admin") {
+      setCurrentPage("login");
+    }
+  }, []);
+
   // Handle hash-based navigation for services
   useEffect(() => {
     const handleHashChange = () => {
@@ -54,7 +62,7 @@ export default function App() {
 
   const handleNavigate = (page: string, newServiceId?: string) => {
     console.log('🧭 Navigating to:', page, 'Current userRole:', userRole);
-    
+
     // Special handling for admin pages
     if ((page === "metrics" || page === "button-test") && userRole !== "admin") {
       console.log('🔒 Admin access required, redirecting to login');
@@ -62,7 +70,7 @@ export default function App() {
     } else {
       setCurrentPage(page);
     }
-    
+
     if (newServiceId) {
       setServiceId(newServiceId);
       window.location.hash = newServiceId;
@@ -114,9 +122,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header 
-        currentPage={currentPage} 
-        onNavigate={handleNavigate} 
+      <Header
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
         userRole={userRole}
         onLogout={handleLogout}
       />

@@ -1,7 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import uuid
-from app import db
+
+db = SQLAlchemy()
 
 class Metric(db.Model):
     __tablename__ = 'metrics'

@@ -1,0 +1,11 @@
+# robots.txt para HHBC Consulting Group
+
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# Sitemap
+Sitemap: https://hhbcconsulting.cl/sitemap.xml
+
+# Crawl-delay (opcional)
+Crawl-delay: 10

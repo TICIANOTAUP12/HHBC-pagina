@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
-from models import Metric, ContactRequest, ContactFormMetric, UserSession
-from app import db
+from models import Metric, ContactRequest, ContactFormMetric, UserSession, db
 from datetime import datetime, timedelta
 import uuid
 import logging

@@ -20,7 +20,7 @@ export function Header({ currentPage, onNavigate, userRole, onLogout }: HeaderPr
         { name: "Leads", id: "leads" },
       ];
     }
-    
+
     // Regular user navigation
     return [
       { name: "Inicio", id: "home" },
@@ -61,34 +61,25 @@ export function Header({ currentPage, onNavigate, userRole, onLogout }: HeaderPr
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`relative transition-all duration-200 text-white hover:text-accent group ${
-                  currentPage === item.id 
-                    ? "text-accent font-semibold" 
+                className={`relative transition-all duration-200 text-white hover:text-accent group ${currentPage === item.id
+                    ? "text-accent font-semibold"
                     : "hover:font-medium"
-                }`}
+                  }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-accent transform transition-transform duration-200 ${
-                  currentPage === item.id ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                }`}></span>
+                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-accent transform transition-transform duration-200 ${currentPage === item.id ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}></span>
               </button>
             ))}
-            
-            {/* Show different buttons based on user role */}
-            {userRole === "admin" ? (
+
+            {/* Show logout button only for admin users */}
+            {userRole === "admin" && (
               <Button
                 onClick={onLogout}
                 className="bg-red-600 hover:bg-red-700 text-white flex items-center space-x-2 px-4 py-2 rounded-md transition-colors duration-200"
               >
                 <LogOut size={16} />
                 <span>Cerrar Sesión</span>
-              </Button>
-            ) : (
-              <Button
-                onClick={() => onNavigate("login")}
-                className="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md transition-colors duration-200"
-              >
-                Portal Admin
               </Button>
             )}
           </nav>
@@ -112,16 +103,15 @@ export function Header({ currentPage, onNavigate, userRole, onLogout }: HeaderPr
                   onNavigate(item.id);
                   setMobileMenuOpen(false);
                 }}
-                className={`block w-full text-left py-3 px-4 rounded-md transition-all duration-200 text-white hover:text-accent hover:bg-gray-800 ${
-                  currentPage === item.id 
-                    ? "text-accent bg-gray-800 font-semibold" 
+                className={`block w-full text-left py-3 px-4 rounded-md transition-all duration-200 text-white hover:text-accent hover:bg-gray-800 ${currentPage === item.id
+                    ? "text-accent bg-gray-800 font-semibold"
                     : ""
-                }`}
+                  }`}
               >
                 {item.name}
               </button>
             ))}
-            
+
             {/* Show different buttons based on user role for mobile */}
             {userRole === "admin" ? (
               <Button
