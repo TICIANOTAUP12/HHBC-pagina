@@ -1,5 +1,4 @@
 import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-import logo from "figma:asset/481131b909069adc212d5551a7e07ec0735ede94.png";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,7 +10,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="mb-4">
-              <img src={logo} alt="HHBC Consulting Group" className="h-16 w-auto" />
+              <img src="/logo.png" alt="HHBC Consulting Group" className="h-16 w-auto" />
             </div>
             <p className="text-sm">
               Soluciones integrales en servicios legales, empresariales y financieros.
@@ -73,7 +72,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start space-x-2">
                 <MapPin size={16} className="mt-1 flex-shrink-0" />
-                <span>Av. Providencia 1234, Oficina 501<br />Santiago, Chile</span>
+                <span>COLÓN 352 OF. 426<br />STUDIOFFICE COLÓN, 426</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone size={16} className="flex-shrink-0" />

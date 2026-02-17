@@ -4,9 +4,9 @@ export const structuredData = {
     "@type": "ProfessionalService",
     "name": "HHBC Consulting Group",
     "description": "Consultoría Legal, TI y Contabilidad en Chile",
-    "url": "https://hhbcconsulting.cl",
-    "logo": "https://hhbcconsulting.cl/logo-hhbc.png",
-    "image": "https://hhbcconsulting.cl/logo-hhbc.png",
+    "url": "https://hhbcconsultancy.sistemataup.online",
+    "logo": "https://hhbcconsultancy.sistemataup.online/logo.png",
+    "image": "https://hhbcconsultancy.sistemataup.online/logo.png",
     "telephone": "+56-2-XXXX-XXXX",
     "address": {
         "@type": "PostalAddress",
@@ -40,8 +40,8 @@ export const organizationData = {
     "@type": "Organization",
     "name": "HHBC Consulting Group",
     "alternateName": "HHBC",
-    "url": "https://hhbcconsulting.cl",
-    "logo": "https://hhbcconsulting.cl/logo-hhbc.png",
+    "url": "https://hhbcconsultancy.sistemataup.online",
+    "logo": "https://hhbcconsultancy.sistemataup.online/logo.png",
     "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",

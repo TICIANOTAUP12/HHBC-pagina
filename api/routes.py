@@ -1,3 +1,23 @@
+# Google Sheets integration
+import gspread
+from google.oauth2.service_account import Credentials
+import datetime
+import os  # Added import for os
+
+# Configuración de Google Sheets
+SHEET_ID = "1BbH_BYf0vAHXFkei8uaW7kdxo8_iWXACt4OYdtHVaew"
+SHEET_NAME = "Hoja 1"  # Cambia si tu hoja tiene otro nombre
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+SERVICE_ACCOUNT_FILE = os.path.join(os.path.dirname(__file__), "../clave.json")
+
+def append_to_sheet(data):
+    creds = Credentials.from_service_account_file(
+        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    gc = gspread.authorize(creds)
+    sh = gc.open_by_key(SHEET_ID)
+    worksheet = sh.worksheet(SHEET_NAME)
+    worksheet.append_row(data, value_input_option="USER_ENTERED")
+
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 from models import Metric, ContactRequest, ContactFormMetric, UserSession, db
@@ -183,6 +203,19 @@ def submit_contact_form():
         logger.error(f"Error submitting contact form: {str(e)}")
         db.session.rollback()
         return jsonify({'error': 'Internal server error'}), 500
+
+# Nuevo endpoint: guarda en Google Sheets
+@api.route("/contact-to-sheet", methods=["POST"])
+def contact_to_sheet():
+    data = request.get_json()
+    name = data.get("name")
+    email = data.get("email")
+    phone = data.get("phone")
+    message = data.get("message")
+    fecha = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Orden de columnas: Nombre, Email, Teléfono, Mensaje, Fecha
+    append_to_sheet([name, email, phone, message, fecha])
+    return jsonify({"status": "ok", "message": "Mensaje guardado en Google Sheets"})
 
 @api.route('/contact/requests', methods=['GET'])
 @jwt_required()

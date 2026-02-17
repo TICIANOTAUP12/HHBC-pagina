@@ -32,7 +32,7 @@ export function ContactPageEnhanced() {
     subject: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fieldInteractions, setFieldInteractions] = useState<FieldInteraction>({});
   const [formStartTime] = useState(Date.now());
@@ -57,7 +57,7 @@ export function ContactPageEnhanced() {
     try {
       const sessionId = getOrCreateSessionId();
       const userId = localStorage.getItem('user_id');
-      
+
       await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/metrics/track`, {
         method: 'POST',
         headers: {
@@ -159,28 +159,16 @@ export function ContactPageEnhanced() {
     try {
       const sessionId = getOrCreateSessionId();
       const completionTime = calculateCompletionTime();
-      
-      // Map frontend fields to backend expectations
+
+      // Only send required fields to Google Sheets endpoint
       const backendData = {
-        name: `${formData.first_name} ${formData.last_name}`,
+        name: `${formData.first_name} ${formData.last_name}`.trim(),
         email: formData.email,
         phone: formData.phone,
-        company: formData.company,
-        subject: formData.subject,
-        message: formData.message,
-        session_id: sessionId,
-        completion_time_seconds: completionTime,
-        field_interactions: fieldInteractions,
-        current_page: '/contact',
-        user_id: localStorage.getItem('user_id'),
-        custom_data: {
-          first_name: formData.first_name,
-          last_name: formData.last_name,
-          form_version: 'enhanced'
-        }
+        message: formData.message
       };
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/contact/submit`, {
+      const response = await fetch(`/api/contact-to-sheet`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -190,9 +178,8 @@ export function ContactPageEnhanced() {
 
       const result = await response.json();
 
-      if (response.ok) {
-        toast.success('¡Formulario enviado exitosamente! Nos pondremos en contacto dentro de 24 horas.');
-        
+      if (response.ok && result.status === 'ok') {
+        toast.success('¡Mensaje enviado exitosamente! Hemos recibido su consulta.');
         // Reset form
         setFormData({
           first_name: '',
@@ -205,11 +192,8 @@ export function ContactPageEnhanced() {
         });
         setFieldInteractions({});
         setPrivacyAccepted(false);
-        
-        // Track successful conversion
-        trackConversionEvent('contact_form_submit', String(result.contact_id));
       } else {
-        toast.error(result.error || 'Error al enviar el formulario');
+        toast.error(result.message || 'Error al enviar el mensaje');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -222,7 +206,7 @@ export function ContactPageEnhanced() {
   const trackConversionEvent = async (eventType: string, requestId: string) => {
     try {
       const sessionId = getOrCreateSessionId();
-      
+
       await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/metrics/track`, {
         method: 'POST',
         headers: {
@@ -358,10 +342,10 @@ export function ContactPageEnhanced() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="firstName">Nombre *</Label>
-                        <Input 
-                          id="firstName" 
-                          placeholder="Juan" 
-                          required 
+                        <Input
+                          id="firstName"
+                          placeholder="Juan"
+                          required
                           value={formData.first_name}
                           onChange={(e) => handleInputChange('first_name', e.target.value)}
                           disabled={isSubmitting}
@@ -369,10 +353,10 @@ export function ContactPageEnhanced() {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="lastName">Apellido *</Label>
-                        <Input 
-                          id="lastName" 
-                          placeholder="Pérez" 
-                          required 
+                        <Input
+                          id="lastName"
+                          placeholder="Pérez"
+                          required
                           value={formData.last_name}
                           onChange={(e) => handleInputChange('last_name', e.target.value)}
                           disabled={isSubmitting}
@@ -408,9 +392,9 @@ export function ContactPageEnhanced() {
 
                     <div className="space-y-2">
                       <Label htmlFor="company">Empresa</Label>
-                      <Input 
-                        id="company" 
-                        placeholder="Mi Empresa S.A." 
+                      <Input
+                        id="company"
+                        placeholder="Mi Empresa S.A."
                         value={formData.company}
                         onChange={(e) => handleInputChange('company', e.target.value)}
                         disabled={isSubmitting}
@@ -419,7 +403,7 @@ export function ContactPageEnhanced() {
 
                     <div className="space-y-2">
                       <Label htmlFor="subject">Asunto *</Label>
-                      <Select 
+                      <Select
                         value={formData.subject}
                         onValueChange={(value) => handleInputChange('subject', value)}
                         disabled={isSubmitting}
@@ -470,8 +454,8 @@ export function ContactPageEnhanced() {
                       </label>
                     </div>
 
-                    <Button 
-                      size="lg" 
+                    <Button
+                      size="lg"
                       className="w-full bg-primary hover:bg-primary/90"
                       type="submit"
                       disabled={isSubmitting}

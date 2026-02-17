@@ -70,3 +70,6 @@ docker-compose.override.yml
 debug_*.js
 test_*.js
 diagnostic_*.js
+
+#llaves
+clave.json

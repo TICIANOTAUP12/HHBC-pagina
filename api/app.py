@@ -39,5 +39,6 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     port = int(os.getenv('PORT', 5001))
+    host = os.getenv('FLASK_HOST', '127.0.0.1')  # Solo localhost por defecto
     debug = os.getenv('FLASK_ENV', 'development') == 'development'
-    app.run(debug=debug, host='0.0.0.0', port=port)
+    app.run(debug=debug, host=host, port=port)
