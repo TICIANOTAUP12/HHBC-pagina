@@ -37,8 +37,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
-                  Área de Clientes
+                <a
+                  href="https://link.mercadopago.cl/hhbccggroup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent font-semibold hover:underline transition-colors"
+                >
+                  Link de Pagos
                 </a>
               </li>
             </ul>

@@ -24,13 +24,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
       icon: Code,
       color: "from-gray-700 to-gray-900",
     },
-    {
-      id: "accounting",
-      title: "Consultoría Económica y Contable",
-      description: "Segunda opinión experta. Asesoramientos, revisiones contables y determinaciones síndico-contables seguras.",
-      icon: Calculator,
-      color: "from-accent to-blue-600",
-    },
   ];
 
   const testimonials = [
@@ -78,7 +71,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               Consultoría integral chilena especializada en Legal, IT y Contabilidad
             </p>
             <p className="text-lg mb-8 text-gray-400">
-              Somos tu aliado estratégico. Ayudamos a PYMES, sindicatos y empresas con grandes flujos de trabajo 
+              Somos tu aliado estratégico. Ayudamos a PYMES, sindicatos y empresas con grandes flujos de trabajo
               a crecer de manera segura, ordenada y correcta en todo Chile.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -127,7 +120,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <div className="text-center mb-12">
             <h2 className="mb-4 text-gray-900">Nuestras Áreas de Servicio</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Tres pilares fundamentales para entregar soluciones concretas a problemas específicos. 
+              Tres pilares fundamentales para entregar soluciones concretas a problemas específicos.
               Expertos comprometidos con el desarrollo del mercado chileno.
             </p>
           </div>
@@ -143,17 +136,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
                     <service.icon className="text-white" size={28} />
                   </div>
-                  {/* Imagen personalizada para IT y Economía */}
-                  {service.id === "it" && (
-                    <div className="flex justify-center mb-2">
-                      <img src="/assets/it-profile.jpg" alt="IT Responsable" style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: '8px' }} />
-                    </div>
-                  )}
-                  {service.id === "accounting" && (
-                    <div className="flex justify-center mb-2">
-                      <img src="/assets/accounting-profile.jpg" alt="Economía Responsable" style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: '8px' }} />
-                    </div>
-                  )}
                   <CardTitle>{service.title}</CardTitle>
                   <CardDescription className="text-base">{service.description}</CardDescription>
                 </CardHeader>
@@ -176,12 +158,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div>
               <h2 className="mb-6 text-gray-900">Innovación y Experiencia al Servicio de Chile</h2>
               <p className="text-lg mb-4 text-gray-700">
-                HHBC Consulting Group es una empresa chilena de consultoría integral, nueva e innovadora, 
+                HHBC Consulting Group es una empresa chilena de consultoría integral, nueva e innovadora,
                 con un fuerte enfoque en fomentar y desarrollar el mercado nacional.
               </p>
               <p className="text-lg mb-6 text-gray-700">
-                Nuestra misión es ser el soporte necesario para que las empresas puedan crecer de manera 
-                segura, ordenada y correcta. Nos especializamos en PYMES, el sector sindical y empresas 
+                Nuestra misión es ser el soporte necesario para que las empresas puedan crecer de manera
+                segura, ordenada y correcta. Nos especializamos en PYMES, el sector sindical y empresas
                 con grandes flujos de trabajo en todo el territorio chileno.
               </p>
               <div className="space-y-4">
@@ -238,8 +220,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="relative shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 border-blue-100/50 bg-white"
               >
                 <CardHeader>
@@ -270,7 +252,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="container mx-auto px-4 text-center">
           <h2 className="mb-4">¿Listo para Hacer Crecer tu Empresa?</h2>
           <p className="text-lg mb-8 text-gray-300 max-w-2xl mx-auto">
-            Únete a las empresas chilenas que ya confían en nosotros. Contacta con nuestro equipo de expertos 
+            Únete a las empresas chilenas que ya confían en nosotros. Contacta con nuestro equipo de expertos
             y descubre cómo podemos ayudarte a crecer de manera segura, ordenada y correcta.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

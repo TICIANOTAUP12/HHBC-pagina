@@ -74,7 +74,7 @@ export function ServicesPage({ serviceId = "legal", onNavigate }: ServicesPagePr
         "Somos tu aliado tecnológico que entrega soluciones integrales. Te acompañamos desde la consultoría y el asesoramiento hasta la implementación de soluciones digitales complejas. Especialistas en automatismos con Inteligencia Artificial y desarrollo de software administrativo de alta eficiencia.",
       icon: Code,
       color: "from-gray-700 to-gray-900",
-      image: "/assets/it-responsible.jpg",
+      image: "/assets/responsable_IT(Juan Cruz).png",
       subservices: [
         {
           name: "Consultoría IT Estratégica",
@@ -143,13 +143,6 @@ export function ServicesPage({ serviceId = "legal", onNavigate }: ServicesPagePr
             >
               Desarrollo y Consultoría IT
             </button>
-            <button
-              onClick={() => window.location.hash = "accounting"}
-              className={`whitespace-nowrap pb-2 border-b-2 transition-colors ${serviceId === "accounting" ? "border-accent text-accent" : "border-transparent text-gray-600 hover:text-gray-900"
-                }`}
-            >
-              Consultoría Económica y Contable
-            </button>
           </div>
         </div>
       </section>
@@ -183,10 +176,10 @@ export function ServicesPage({ serviceId = "legal", onNavigate }: ServicesPagePr
                 className="object-contain max-h-[500px] w-auto bg-white rounded-lg p-4 shadow-lg"
               />
               <p className="mt-4 text-center text-gray-700 text-sm font-medium">
-                {serviceId === "legal" && "Responsable: Juan Cruz"}
+                {serviceId === "legal" && "Responsable: Matias - 'Tu aliado legal estratégico'"}
                 {serviceId === "it" && (
                   <>
-                    Responsable: Matias
+                    Responsable: Juan Cruz - "Tu socio tecnológico integral"
                     <br />
                     <span className="text-xs text-gray-500">"Soluciones tecnológicas para tu empresa"</span>
                   </>
