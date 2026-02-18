@@ -37,7 +37,7 @@ export function ServicesPage({ serviceId = "legal", onNavigate }: ServicesPagePr
         "Ofrecemos un modelo de suscripción mensual que funciona como un seguro legal para tu empresa. Obtén acceso a un grupo de abogados altamente capacitados y dedicados a tu compañía, sin el alto costo fijo de un departamento legal interno.",
       icon: Scale,
       color: "from-accent to-blue-500",
-      image: "https://images.unsplash.com/photo-1589307904488-7d60ff29c975?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWdhbCUyMGxhdyUyMG9mZmljZXxlbnwxfHx8fDE3NjIyMzU5OTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "/assets/legal-responsible.jpg",
       subservices: [
         {
           name: "Suscripción Mensual",
@@ -74,7 +74,7 @@ export function ServicesPage({ serviceId = "legal", onNavigate }: ServicesPagePr
         "Somos tu aliado tecnológico que entrega soluciones integrales. Te acompañamos desde la consultoría y el asesoramiento hasta la implementación de soluciones digitales complejas. Especialistas en automatismos con Inteligencia Artificial y desarrollo de software administrativo de alta eficiencia.",
       icon: Code,
       color: "from-gray-700 to-gray-900",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50JTIwdGVhbXxlbnwxfHx8fDE3NjIzMDEwOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "/assets/it-responsible.jpg",
       subservices: [
         {
           name: "Consultoría IT Estratégica",
@@ -104,43 +104,6 @@ export function ServicesPage({ serviceId = "legal", onNavigate }: ServicesPagePr
         "Innovación tecnológica aplicada a tu negocio",
       ],
     },
-    accounting: {
-      title: "Consultoría Económica y Contable",
-      subtitle: "Tu Segunda Opinión Experta y Confiable",
-      description:
-        "Contamos con personal de gran experiencia en el sector contable chileno. Esta área está diseñada para ofrecer una segunda opinión experta y de confianza. Realizamos asesoramientos de empresas, revisiones de contabilidad y determinaciones seguras sobre todo el área síndico-contable.",
-      icon: Calculator,
-      color: "from-accent to-blue-600",
-      image: "https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5hbmNpYWwlMjBhZHZpc29yJTIwZGVza3xlbnwxfHx8fDE3NjIzMDEwOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      subservices: [
-        {
-          name: "Segunda Opinión Contable",
-          description: "Revisión experta e independiente de tu contabilidad y estados financieros",
-          icon: FileCheck,
-        },
-        {
-          name: "Asesoramiento Empresarial",
-          description: "Consultoría económica estratégica para toma de decisiones informadas",
-          icon: TrendingUp,
-        },
-        {
-          name: "Revisiones Contables",
-          description: "Auditoría detallada de registros contables y cumplimiento normativo",
-          icon: Shield,
-        },
-        {
-          name: "Determinaciones Síndico-Contables",
-          description: "Análisis y determinaciones expertas en el área síndico-contable chilena",
-          icon: CalcIcon,
-        },
-      ],
-      benefits: [
-        "Personal con gran experiencia en el sector chileno",
-        "Segunda opinión confiable e independiente",
-        "Seguridad en determinaciones contables complejas",
-        "Asesoramiento económico estratégico",
-      ],
-    },
   };
 
   const currentService = servicesData[serviceId as keyof typeof servicesData] || servicesData.legal;
@@ -168,25 +131,22 @@ export function ServicesPage({ serviceId = "legal", onNavigate }: ServicesPagePr
           <div className="flex space-x-8 overflow-x-auto py-4">
             <button
               onClick={() => window.location.hash = "legal"}
-              className={`whitespace-nowrap pb-2 border-b-2 transition-colors ${
-                serviceId === "legal" ? "border-accent text-accent" : "border-transparent text-gray-600 hover:text-gray-900"
-              }`}
+              className={`whitespace-nowrap pb-2 border-b-2 transition-colors ${serviceId === "legal" ? "border-accent text-accent" : "border-transparent text-gray-600 hover:text-gray-900"
+                }`}
             >
               Asesoramiento Legal
             </button>
             <button
               onClick={() => window.location.hash = "it"}
-              className={`whitespace-nowrap pb-2 border-b-2 transition-colors ${
-                serviceId === "it" ? "border-black text-black" : "border-transparent text-gray-600 hover:text-gray-900"
-              }`}
+              className={`whitespace-nowrap pb-2 border-b-2 transition-colors ${serviceId === "it" ? "border-black text-black" : "border-transparent text-gray-600 hover:text-gray-900"
+                }`}
             >
               Desarrollo y Consultoría IT
             </button>
             <button
               onClick={() => window.location.hash = "accounting"}
-              className={`whitespace-nowrap pb-2 border-b-2 transition-colors ${
-                serviceId === "accounting" ? "border-accent text-accent" : "border-transparent text-gray-600 hover:text-gray-900"
-              }`}
+              className={`whitespace-nowrap pb-2 border-b-2 transition-colors ${serviceId === "accounting" ? "border-accent text-accent" : "border-transparent text-gray-600 hover:text-gray-900"
+                }`}
             >
               Consultoría Económica y Contable
             </button>
@@ -214,7 +174,7 @@ export function ServicesPage({ serviceId = "legal", onNavigate }: ServicesPagePr
                 ))}
               </div>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
               <ServiceImage
                 src={serviceImages[serviceId as keyof typeof serviceImages]?.transparent || currentService.image}
                 alt={currentService.title}
@@ -222,6 +182,16 @@ export function ServicesPage({ serviceId = "legal", onNavigate }: ServicesPagePr
                 size="large"
                 className="object-contain max-h-[500px] w-auto bg-white rounded-lg p-4 shadow-lg"
               />
+              <p className="mt-4 text-center text-gray-700 text-sm font-medium">
+                {serviceId === "legal" && "Responsable: Juan Cruz"}
+                {serviceId === "it" && (
+                  <>
+                    Responsable: Matias
+                    <br />
+                    <span className="text-xs text-gray-500">"Soluciones tecnológicas para tu empresa"</span>
+                  </>
+                )}
+              </p>
             </div>
           </div>
 

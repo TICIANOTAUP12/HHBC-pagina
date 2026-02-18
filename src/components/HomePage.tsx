@@ -35,27 +35,27 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
   const testimonials = [
     {
-      name: "María González",
-      position: "Gerente General, Minera del Norte",
-      content: "El servicio de seguro legal nos ha permitido tener asesoría permanente sin los altos costos fijos. Excelente inversión.",
-      avatar: "MG",
+      name: "CChC",
+      position: "Cámara Chilena de la Construcción",
+      content: "El equipo de HHBC nos brindó asesoría legal estratégica y soluciones rápidas para nuestros desafíos gremiales.",
+      avatar: "CChC",
     },
     {
-      name: "Carlos Rodríguez",
-      position: "Director Financiero, Comercial Sur",
-      content: "La consultoría contable de HHBC nos dio la segunda opinión que necesitábamos. Personal muy experimentado y confiable.",
-      avatar: "CR",
+      name: "Derco Valentini",
+      position: "Gerencia Legal, Derco Valentini",
+      content: "Excelente acompañamiento en temas legales y cumplimiento normativo. Muy recomendados por su profesionalismo.",
+      avatar: "DV",
     },
     {
-      name: "Ana Martínez",
-      position: "CEO, TechStart Chile",
-      content: "Implementaron nuestro sistema administrativo con IA. La automatización ha mejorado nuestra eficiencia un 40%.",
-      avatar: "AM",
+      name: "Cliente Confidencial",
+      position: "Empresa del rubro industrial",
+      content: "La consultoría de HHBC nos permitió optimizar procesos y resolver situaciones complejas con rapidez y confianza.",
+      avatar: "CC",
     },
   ];
 
   const stats = [
-    { icon: Users, value: "500+", label: "Empresas Chilenas Atendidas" },
+    { icon: Users, value: "50+", label: "Empresas Chilenas Atendidas" },
     { icon: Award, value: "Innovación", label: "Enfoque Tecnológico" },
     { icon: Shield, value: "100%", label: "Confidencialidad y Seguridad" },
   ];
@@ -143,6 +143,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
                     <service.icon className="text-white" size={28} />
                   </div>
+                  {/* Imagen personalizada para IT y Economía */}
+                  {service.id === "it" && (
+                    <div className="flex justify-center mb-2">
+                      <img src="/assets/it-profile.jpg" alt="IT Responsable" style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: '8px' }} />
+                    </div>
+                  )}
+                  {service.id === "accounting" && (
+                    <div className="flex justify-center mb-2">
+                      <img src="/assets/accounting-profile.jpg" alt="Economía Responsable" style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: '8px' }} />
+                    </div>
+                  )}
                   <CardTitle>{service.title}</CardTitle>
                   <CardDescription className="text-base">{service.description}</CardDescription>
                 </CardHeader>

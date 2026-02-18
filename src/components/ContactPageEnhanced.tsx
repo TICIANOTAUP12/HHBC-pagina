@@ -263,8 +263,8 @@ export function ContactPageEnhanced() {
                     <div>
                       <h4 className="mb-1">Dirección</h4>
                       <p className="text-gray-600">
-                        Av. Providencia 1234, Oficina 501<br />
-                        Providencia, Santiago<br />
+                        APOQUINDO 7331 OF 203 EDIF 1 PS2<br />
+                        LAS CONDES, SANTIAGO<br />
                         Región Metropolitana, Chile
                       </p>
                     </div>
