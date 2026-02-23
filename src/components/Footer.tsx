@@ -54,18 +54,13 @@ export function Footer() {
             <h3 className="text-white mb-4">Servicios</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#legal" className="hover:text-blue-400 transition-colors">
                   Asesoría Legal
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
-                  Consultoría Empresarial
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
-                  Asesoría Financiera
+                <a href="#it" className="hover:text-blue-400 transition-colors">
+                  Consultoría Empresarial / IT
                 </a>
               </li>
             </ul>
@@ -85,7 +80,7 @@ export function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <Mail size={16} className="flex-shrink-0" />
-                <span>contacto@hhbc.cl</span>
+                <span>corporate@hhbcconsulting.com</span>
               </li>
             </ul>
 

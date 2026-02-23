@@ -35,7 +35,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
     },
     {
       name: "Derco Valentini",
-      position: "Gerencia Legal, Derco Valentini",
+      position: "Gerencia, Derco Valentini",
       content: "Excelente acompañamiento en temas legales y cumplimiento normativo. Muy recomendados por su profesionalismo.",
       avatar: "DV",
     },
