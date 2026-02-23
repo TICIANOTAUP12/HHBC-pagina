@@ -277,8 +277,8 @@ export function ContactPageEnhanced() {
                     <div>
                       <h4 className="mb-1">Teléfono</h4>
                       <p className="text-gray-600">
-                        +56 9 1234 5678<br />
-                        +56 2 2345 6789
+                        +56 9 3361 9789<br />
+
                       </p>
                     </div>
                   </div>

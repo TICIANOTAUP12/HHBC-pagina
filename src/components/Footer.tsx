@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { MapPin, Phone, Mail, Linkedin, Instagram } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -81,7 +81,7 @@ export function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <Phone size={16} className="flex-shrink-0" />
-                <span>+56 9 7802 1210</span>
+                <span>+56933619789</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail size={16} className="flex-shrink-0" />
@@ -91,16 +91,20 @@ export function Footer() {
 
             {/* Social Media */}
             <div className="flex space-x-4 mt-6">
-              <a href="#" className="hover:text-accent transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="hover:text-accent transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a
+                href="https://www.linkedin.com/company/hhbc-consulting-group"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a
+                href="https://www.instagram.com/hhbc.consultinggroup/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
                 <Instagram size={20} />
               </a>
             </div>

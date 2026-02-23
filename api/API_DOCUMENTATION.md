@@ -102,7 +102,7 @@ Envía un nuevo formulario de contacto.
   "first_name": "Juan",
   "last_name": "Pérez",
   "email": "juan@empresa.cl",
-  "phone": "+56 9 1234 5678",
+  "phone": "+56 9 3361 9789",
   "company": "Empresa S.A.",
   "subject": "legal",
   "message": "Necesito asesoramiento legal para mi empresa...",
